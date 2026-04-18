@@ -9,6 +9,57 @@ A full-stack AI-powered platform to evaluate tutor candidates through a simulate
 👉 https://ai-tutor-screener-cuemath-il4w.vercel.app
 
 ---
+## Screenshots
+### Landing Page
+Clean entry point where candidates start the interview.
+![Landing Page](./public/screenshots/landing.png)
+---
+
+### Interview Flow  
+Interactive voice/text-based interview experience.
+
+<p align="center">
+  <img src="./public/screenshots/interview.png" width="60%" /><br/>
+  <sub>Interview in progress</sub>
+</p>
+
+<p align="center">
+  <img src="./public/screenshots/thankyou.png" width="60%" /><br/>
+  <sub>Thank you screen after completion</sub>
+</p>
+
+---
+
+### Recruiter Dashboard  
+Recruiter can see candidate's status.
+
+<p align="center">
+  <img src="./public/screenshots/login.png" width="45%" />
+  <img src="./public/screenshots/dashboard.png" width="45%" />
+</p>
+
+---
+
+### Reports  
+Demo candidate reports  
+
+**Candidate 1**
+
+<p align="center">
+  <img src="./public/screenshots/report1.1.png" width="30%" />
+  <img src="./public/screenshots/report1.2.png" width="30%" />
+  <img src="./public/screenshots/report1.3.png" width="30%" />
+</p>
+
+**Candidate 2**
+
+<p align="center">
+  <img src="./public/screenshots/report2.1.png" width="30%" />
+  <img src="./public/screenshots/report2.2.png" width="30%" />
+  <img src="./public/screenshots/report2.3.png" width="30%" />
+</p>
+
+---
 
 ## What This Project Does
 
