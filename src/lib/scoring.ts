@@ -84,17 +84,6 @@ export function validateEvaluationResult(result: EvaluationResult): boolean {
     // Recommendation
     const validRecommendations = ['strong_hire', 'hire', 'maybe', 'no_hire']
     if (!validRecommendations.includes(result.recommendation)) return false
-
-    // Evidence
-    if (!Array.isArray(result.evidenceQuotes) || result.evidenceQuotes.length < 3) return false
-
-    const validSentiments = ['positive', 'neutral', 'cautionary']
-
-    for (const q of result.evidenceQuotes) {
-      if (!q.text || !q.dimension || !q.sentiment) return false
-      if (!validSentiments.includes(q.sentiment)) return false
-    }
-
     // Logical consistency (basic)
     const avg =
       result.scores.reduce((sum, s) => sum + s.score, 0) / 6

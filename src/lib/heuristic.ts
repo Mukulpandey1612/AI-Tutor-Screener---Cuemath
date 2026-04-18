@@ -1,4 +1,4 @@
-import { EvaluationResult, TranscriptEntry, RecommendationTier } from '@/types/interview'
+import { EvaluationResult, TranscriptEntry, RecommendationTier, EvaluationDimension } from '@/types/interview'
 
 export function generateHeuristicEvaluation(
   candidateName: string,
@@ -9,19 +9,18 @@ export function generateHeuristicEvaluation(
   if (!transcript || !Array.isArray(transcript) || transcript.length === 0) {
     return {
       scores: [
-        { dimension: "clarity", score: 10, label: "N/A", reasoning: "Data missing", evidence: "None" },
-        { dimension: "warmth", score: 10, label: "N/A", reasoning: "Data missing", evidence: "None" },
-        { dimension: "patience", score: 10, label: "N/A", reasoning: "Data missing", evidence: "None" },
-        { dimension: "simplification", score: 10, label: "N/A", reasoning: "Data missing", evidence: "None" },
-        { dimension: "fluency", score: 10, label: "N/A", reasoning: "Data missing", evidence: "None" },
-        { dimension: "confidence", score: 10, label: "N/A", reasoning: "Data missing", evidence: "None" }
+        { dimension: "clarity"as EvaluationDimension, score: 10, label: "N/A", reasoning: "Data missing" },
+        { dimension: "warmth"as EvaluationDimension, score: 10, label: "N/A", reasoning: "Data missing" },
+        { dimension: "patience"as EvaluationDimension, score: 10, label: "N/A", reasoning: "Data missing" },
+        { dimension: "simplification"as EvaluationDimension, score: 10, label: "N/A", reasoning: "Data missing" },
+        { dimension: "fluency"as EvaluationDimension, score: 10, label: "N/A", reasoning: "Data missing" },
+        { dimension: "confidence"as EvaluationDimension, score: 10, label: "N/A", reasoning: "Data missing"}
       ],
       overallScore: 10,
       recommendation: 'no_hire',
       summary: "System failed to process the transcript due to empty data.",
       strengths: ["None"],
       improvements: ["Critical system error or empty interview."],
-      evidenceQuotes: [],
       evaluatedAt: new Date().toISOString(),
       fallback: true
     }
@@ -45,21 +44,20 @@ export function generateHeuristicEvaluation(
 
   // 🟡 3. DIMENSION VARIANCE (The "No-Glitch" Effect)
   // We apply slight offsets so the scores aren't identical
-  const dimensions = [
-    { name: "clarity", offset: 2 },
-    { name: "warmth", offset: -3 },
-    { name: "patience", offset: 1 },
-    { name: "simplification", offset: -1 },
-    { name: "fluency", offset: 3 },
-    { name: "confidence", offset: 0 }
-  ]
+  const dimensions: { name: EvaluationDimension; offset: number }[] = [
+  { name: "clarity", offset: 2 },
+  { name: "warmth", offset: -3 },
+  { name: "patience", offset: 1 },
+  { name: "simplification", offset: -1 },
+  { name: "fluency", offset: 3 },
+  { name: "confidence", offset: 0 }
+]
 
   const scores = dimensions.map(d => ({
     dimension: d.name,
     score: Math.min(baseScore + d.offset, 100),
     label: baseScore < 40 ? "Poor" : baseScore < 65 ? "Average" : "Good",
     reasoning: "Volume-based heuristic estimation.",
-    evidence: `Average response length of ${Math.round(avgWords)} words.`
   }))
 
   const summary = isGibberish
@@ -73,13 +71,6 @@ export function generateHeuristicEvaluation(
     summary,
     strengths: isGibberish ? ["Completed session"] : ["Good engagement volume", "Detailed verbal responses"],
     improvements: isGibberish ? ["Low participation", "Brief answers"] : ["Needs deep AI qualitative analysis"],
-    evidenceQuotes: candidateAnswers.slice(0, 3).map((ans, i) => ({
-      id: `ev_${i}`,
-      text: ans.content || '',
-      dimension: "fluency",
-      sentiment: isGibberish ? "cautionary" : "neutral",
-      questionIndex: ans.questionIndex || 0
-    })),
     evaluatedAt: new Date().toISOString(),
     fallback: true
   }

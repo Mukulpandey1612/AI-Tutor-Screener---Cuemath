@@ -15,7 +15,6 @@ type Tab = "overview" | "dimensions" | "transcript";
 const TABS: { id: Tab; label: string }[] = [
   { id: "overview", label: "Overview" },
   { id: "dimensions", label: "Dimensions" },
-  // { id: "evidence", label: "Evidence" },
   { id: "transcript", label: "Transcript" },
 ];
 

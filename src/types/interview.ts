@@ -10,16 +10,8 @@ export interface DimensionScore {
   dimension: EvaluationDimension
   score: number
   label: string
-  evidence: string
+ 
   reasoning: string
-}
-
-export interface EvidenceQuote {
-  id: string
-  text: string
-  dimension: EvaluationDimension
-  sentiment: 'positive' | 'cautionary' | 'neutral'
-  questionIndex: number
 }
 
 export type RecommendationTier = 'strong_hire' | 'hire' | 'maybe' | 'no_hire'
@@ -31,7 +23,6 @@ export interface EvaluationResult {
   summary: string
   strengths: string[]
   improvements: string[]
-  evidenceQuotes: EvidenceQuote[]
   evaluatedAt: string
   /** true when scored locally without Gemini (fallback mode) */
   fallback?: boolean

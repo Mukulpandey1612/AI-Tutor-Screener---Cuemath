@@ -53,12 +53,6 @@ Output ONLY raw, valid JSON. No backticks.
   "summary": "2-3 sentences summarizing fit.",
   "strengths": ["Strength 1", "Strength 2"],
   "improvements": ["Improvement 1", "Improvement 2"],
-  "evidenceQuotes": [
-    {
-      "quote": "Verbatim text.",
-      "dimension": "warmth",
-      "sentiment": "positive"
-    }
   ],
   "evaluatedAt": "${new Date().toISOString()}"
 }`
