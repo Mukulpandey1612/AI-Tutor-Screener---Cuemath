@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Candidate {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  createdAt DateTime @default(now())
+  
+  // Relation to their interview
+  interview Interview[]
+}
+
+model Interview {
+  id              String   @id @default(cuid())
+  candidateId     String   
+  candidate       Candidate @relation(fields: [candidateId], references: [id])
+  
+  status          String   @default("PENDING") // PENDING, EVALUATING, COMPLETED, ERROR
+  transcript      Json?    // The array of chat messages
+  evaluation      Json?    // The Gemini result object (null until finished)
+  overallScore    Int?
+  recommendation  String?  // strong_hire, no_hire, etc.
+  
+  createdAt       DateTime @default(now())
+  completedAt     DateTime?
+}
