@@ -83,7 +83,6 @@ src/
 │   │   └── FallbackInput.tsx     # Text input fallback
 │   └── dashboard/
 │       ├── RadarScoreCard.tsx    # Recharts radar + score bars
-│       ├── EvidenceQuotes.tsx    # Filterable quote highlights
 │       └── RecommendationPanel.tsx # Verdict + strengths/improvements
 │
 ├── lib/
