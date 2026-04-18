@@ -77,7 +77,7 @@ This system simulates a real recruiter workflow:
 ### AI / Logic
 
 * Custom heuristic scoring engine
-* (Optional) Gemini API integration
+* Gemini API integration
 
 ### Deployment
 
@@ -157,7 +157,6 @@ DATABASE_URL=your_supabase_connection_string
 NEXTAUTH_SECRET=your_secret
 NEXTAUTH_URL=http://localhost:3000
 
-# Optional
 GEMINI_API_KEY=your_key
 ADMIN_USER=your_admin_user
 ADMIN_PASS=your_admin_pass
