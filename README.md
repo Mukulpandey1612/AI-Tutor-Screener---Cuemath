@@ -10,8 +10,10 @@ A full-stack AI-powered platform to evaluate tutor candidates through a simulate
 
 ---
 ## Screenshots
+
 ### Landing Page
 Clean entry point where candidates start the interview.
+
 ![Landing Page](./public/screenshots/landing.png)
 ---
 
