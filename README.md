@@ -1,16 +1,16 @@
-# 🎯 Cuemath AI Tutor Screener
+# Cuemath AI Tutor Screener
 
 A full-stack AI-powered platform to evaluate tutor candidates through a simulated interview and generate structured hiring insights.
 
 ---
 
-## 🚀 Live Demo
+## Live Demo
 
 👉 https://ai-tutor-screener-cuemath-il4w.vercel.app
 
 ---
 
-## 🧠 What This Project Does
+## What This Project Does
 
 This system simulates a real recruiter workflow:
 
@@ -21,15 +21,15 @@ This system simulates a real recruiter workflow:
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-* 🎙️ **Voice + Text Interview Flow**
+* **Voice + Text Interview Flow**
   Browser-based speech input with fallback to text
 
-* 🤖 **AI Evaluation Engine**
+* **AI Evaluation Engine**
   Heuristic + AI-based scoring system for realistic feedback
 
-* 📊 **6-Dimension Scoring**
+* **6-Dimension Scoring**
 
   * Clarity
   * Warmth
@@ -38,21 +38,21 @@ This system simulates a real recruiter workflow:
   * Fluency
   * Confidence
 
-* 📈 **Recruiter Dashboard**
+* **Recruiter Dashboard**
 
   * Radar chart visualization
   * Overall score + recommendation (Hire / Maybe / No Hire)
   * Candidate summaries
 
-* 🧾 **Transcript Tracking**
+* **Transcript Tracking**
   Full interview conversation stored and processed
 
-* 🔐 **Admin Authentication**
+* **Admin Authentication**
   Protected dashboard with login system
 
 ---
 
-## 🏗️ Tech Stack
+## Tech Stack
 
 ### Frontend
 
@@ -85,7 +85,7 @@ This system simulates a real recruiter workflow:
 
 ---
 
-## 🧩 Architecture Overview
+## Architecture Overview
 
 ```
 User → Next.js App → API Routes → Prisma → Supabase DB
@@ -97,7 +97,7 @@ User → Next.js App → API Routes → Prisma → Supabase DB
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
@@ -129,12 +129,12 @@ src/
 
 ---
 
-## ⚙️ Setup Instructions
+## Setup Instructions
 
 ### 1. Clone the repo
 
 ```
-git clone https://github.com/your-username/ai-tutor-screener.git
+git clone https://github.com/Mukulpandey1612/AI-Tutor-Screener---Cuemath.git
 cd ai-tutor-screener
 ```
 
@@ -179,7 +179,7 @@ npm run dev
 
 ---
 
-## 🔄 Interview Flow
+## Interview Flow
 
 1. Candidate enters name + email
 2. Interview session is created
@@ -190,7 +190,7 @@ npm run dev
 
 ---
 
-## 📌 Future Improvements
+## Future Improvements
 
 * Replace heuristic scoring with LLM-based evaluation
 * Add multi-user authentication system
@@ -199,6 +199,6 @@ npm run dev
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 Built by Mukul Pandey
