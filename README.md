@@ -34,8 +34,8 @@ Interactive voice/text-based interview experience.
 Recruiter can see candidate's status.
 
 <p align="center">
-  <img src="./public/screenshots/login.png" width="30%" />
-  <img src="./public/screenshots/dashboard.png" width="30%" />
+  <img src="./public/screenshots/recruiter.png" width="45%" />
+  <img src="./public/screenshots/dashboard.png" width="45%" />
 </p>
 
 ---
