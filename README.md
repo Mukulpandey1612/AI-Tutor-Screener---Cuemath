@@ -1,121 +1,204 @@
-# Cuemath AI Tutor Screener
+# 🎯 Cuemath AI Tutor Screener
 
-A premium, production-grade voice AI screening platform for Cuemath tutor candidates.
+A full-stack AI-powered platform to evaluate tutor candidates through a simulated interview and generate structured hiring insights.
 
-## Features
+---
 
-- 🎙️ **Voice-First Interview** — Browser-native SpeechRecognition with text fallback
-- 🤖 **AI-Adaptive Questions** — 5 scenario-based questions with contextual follow-ups
-- 📊 **6-Dimension Evaluation** — Clarity, Warmth, Patience, Simplification, Fluency, Confidence
-- 📈 **Recruiter Dashboard** — Radar chart, evidence quotes, recommendation verdict
-- 📝 **Full Transcript** — Expandable, filterable conversation log
-- ✨ **Premium Design** — Dark SaaS aesthetic with Framer Motion animations
+## 🚀 Live Demo
 
-## Tech Stack
+👉 https://ai-tutor-screener-cuemath-il4w.vercel.app
 
-- **Next.js 15** (App Router)
-- **TypeScript**
-- **Tailwind CSS**
-- **Framer Motion**
-- **Recharts** (Radar chart)
-- **Anthropic Claude** (AI evaluation + follow-up generation)
+---
 
-## Setup
+## 🧠 What This Project Does
 
-### 1. Install dependencies
+This system simulates a real recruiter workflow:
 
-```bash
-npm install
+1. Candidate starts an interview
+2. Answers adaptive questions (voice/text)
+3. System evaluates responses across 6 dimensions
+4. Recruiter gets a structured dashboard with scores + recommendation
+
+---
+
+## ✨ Key Features
+
+* 🎙️ **Voice + Text Interview Flow**
+  Browser-based speech input with fallback to text
+
+* 🤖 **AI Evaluation Engine**
+  Heuristic + AI-based scoring system for realistic feedback
+
+* 📊 **6-Dimension Scoring**
+
+  * Clarity
+  * Warmth
+  * Patience
+  * Simplification
+  * Fluency
+  * Confidence
+
+* 📈 **Recruiter Dashboard**
+
+  * Radar chart visualization
+  * Overall score + recommendation (Hire / Maybe / No Hire)
+  * Candidate summaries
+
+* 🧾 **Transcript Tracking**
+  Full interview conversation stored and processed
+
+* 🔐 **Admin Authentication**
+  Protected dashboard with login system
+
+---
+
+## 🏗️ Tech Stack
+
+### Frontend
+
+* Next.js 15 (App Router)
+* TypeScript
+* Tailwind CSS
+* Framer Motion
+
+### Backend
+
+* Next.js API Routes
+* Prisma ORM
+
+### Database
+
+* PostgreSQL (Supabase)
+
+### Visualization
+
+* Recharts (Radar Chart)
+
+### AI / Logic
+
+* Custom heuristic scoring engine
+* (Optional) Gemini API integration
+
+### Deployment
+
+* Vercel
+
+---
+
+## 🧩 Architecture Overview
+
+```
+User → Next.js App → API Routes → Prisma → Supabase DB
+                          ↓
+                    Evaluation Engine
+                          ↓
+                   Results Dashboard
 ```
 
-### 2. Configure environment variables
+---
 
-Edit `.env.local`:
-
-```env
-ANTHROPIC_API_KEY=sk-ant-your-key-here
-```
-
-Get your API key from [console.anthropic.com](https://console.anthropic.com).
-
-### 3. Run in development
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000)
-
-### 4. Build for production
-
-```bash
-npm run build
-npm start
-```
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 src/
 ├── app/
+│   ├── admin/dashboard        # Protected recruiter dashboard
+│   ├── interview/[id]         # Interview flow
+│   ├── results/[id]           # Candidate evaluation results
 │   ├── api/
-│   │   ├── evaluate/route.ts     # AI evaluation endpoint
-│   │   ├── followup/route.ts     # Follow-up question generator
-│   │   └── speech/route.ts       # Speech API info endpoint
-│   ├── interview/page.tsx        # Voice interview experience
-│   ├── results/page.tsx          # Recruiter dashboard
-│   ├── globals.css               # Design system + custom animations
-│   ├── layout.tsx                # Root layout with metadata
-│   └── page.tsx                  # Landing page
+│   │   ├── start-interview    # Create interview session
+│   │   ├── interviews/[id]    # Fetch interview data
+│   │   ├── evaluate           # Scoring logic
+│   │   └── speech             # Voice handling
+│   └── login                  # Admin login page
 │
 ├── components/
-│   ├── ui/
-│   │   ├── Button.tsx            # Multi-variant button
-│   │   ├── Card.tsx              # Glass/elevated card variants
-│   │   ├── ProgressStepper.tsx   # Interview progress tracker
-│   │   ├── Waveform.tsx          # Voice visualization
-│   │   ├── TypingIndicator.tsx   # AI thinking states
-│   │   └── Skeleton.tsx          # Loading skeletons
-│   ├── interview/
-│   │   ├── ChatBubble.tsx        # Message bubbles
-│   │   ├── TranscriptDrawer.tsx  # Slide-out transcript panel
-│   │   ├── VoiceRecorder.tsx     # Browser SpeechRecognition
-│   │   └── FallbackInput.tsx     # Text input fallback
-│   └── dashboard/
-│       ├── RadarScoreCard.tsx    # Recharts radar + score bars
-│       └── RecommendationPanel.tsx # Verdict + strengths/improvements
+│   ├── dashboard              # Charts & recommendation UI
+│   ├── interview              # Chat + voice components
+│   └── ui                     # Reusable UI elements
 │
 ├── lib/
-│   ├── questions.ts              # 5 base screening questions
-│   ├── rubric.ts                 # Scoring rubric definitions
-│   ├── scoring.ts                # Score computation utilities
-│   └── prompts.ts                # AI prompt templates
+│   ├── prisma.ts              # DB client
+│   ├── heuristic.ts           # Scoring engine
+│   ├── scoring.ts             # Score utilities
+│   └── questions.ts           # Interview questions
 │
 └── types/
-    └── interview.ts              # TypeScript interfaces
+    └── interview.ts           # Type definitions
 ```
-
-## Interview Flow
-
-1. **Landing page** — Candidate enters name and email
-2. **Interview** — AI asks 5 adaptive questions with optional follow-ups
-3. **Evaluation** — Claude evaluates across 6 dimensions
-4. **Results** — Full recruiter dashboard with radar chart and evidence
-
-## Browser Support
-
-Voice input requires:
-- Chrome 33+
-- Edge 79+
-- Safari 14.1+ (with user permission)
-
-Text fallback is automatically offered when voice is unavailable.
-
-## AI Models Used
-
-- **claude-sonnet-4-5** — Full evaluation and scoring
-- **claude-haiku-4-5-20251001** — Follow-up question generation (faster, cheaper)
 
 ---
 
-*Internal Cuemath Talent Platform · Not for external distribution*
+## ⚙️ Setup Instructions
+
+### 1. Clone the repo
+
+```
+git clone https://github.com/your-username/ai-tutor-screener.git
+cd ai-tutor-screener
+```
+
+---
+
+### 2. Install dependencies
+
+```
+npm install
+```
+
+---
+
+### 3. Setup environment variables
+
+Create `.env.local`:
+
+```
+DATABASE_URL=your_supabase_connection_string
+NEXTAUTH_SECRET=your_secret
+NEXTAUTH_URL=http://localhost:3000
+
+# Optional
+GEMINI_API_KEY=your_key
+ADMIN_USER=your_admin_user
+ADMIN_PASS=your_admin_pass
+```
+
+---
+
+### 4. Run locally
+
+```
+npm run dev
+```
+
+---
+
+### 5. Open app
+
+👉 http://localhost:3000
+
+---
+
+## 🔄 Interview Flow
+
+1. Candidate enters name + email
+2. Interview session is created
+3. Questions are asked sequentially
+4. Responses are recorded
+5. Evaluation engine calculates scores
+6. Results shown in dashboard
+
+---
+
+## 📌 Future Improvements
+
+* Replace heuristic scoring with LLM-based evaluation
+* Add multi-user authentication system
+* Improve dashboard analytics
+* Add interview recording playback
+
+---
+
+## 👨‍💻 Author
+
+Built by Mukul Pandey
