@@ -8,8 +8,8 @@ import { BrainCircuit, Mic, BarChart4, FileText } from "lucide-react";
 const features = [
   {
     icon: BrainCircuit,
-    title: "Adaptive Interrogation",
-    desc: "Dynamic follow-ups expose true depth of knowledge, not memorized answers.",
+    title: "Adaptive Analysis",
+    desc: "Consistent, scenario-based questions designed to evaluate real teaching ability",
     color: "#e8bc20", // Brand Gold
   },
   {
